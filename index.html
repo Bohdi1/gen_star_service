@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEN STAR SERVICE - Ремонт бензотехніки та генераторів</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Стилі, які були вбудовані в HTML, будуть перенесені в style.css або адаптовані */
+    /* Основні зміни кольорів будуть в style.css через змінні */
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .social-icons a {
+      width: 60px;
+      height: 60px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      color: white; /* Буде залежати від --secondary-color */
+      background: #222; /* Буде залежати від --primary-color або іншої змінної */
+      position: relative;
+      z-index: 1;
+      overflow: visible;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px #000; /* Адаптувати тінь */
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Адаптувати тінь */
+    }
+
+    /* Кольори для іконок соцмереж будуть адаптовані або залишені, якщо вони контрастують */
+    .social-icons a.viber {
+      background: #7360f2; /* Можливо, замінити на --accent-color або інший */
+    }
+
+    .social-icons a.telegram {
+      background: #0088cc; /* Можливо, замінити на --accent-color або інший */
+    }
+
+    .social-icons a.instagram {
+      background: radial-gradient(circle at 30% 30%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 100%); /* Можливо, замінити */
+    }
+
+    .qr-popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .qr-box {
+      background: #fff; /* Адаптувати до --secondary-color */
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .qr-box img {
+      width: 200px;
+      height: 200px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #333; /* Адаптувати */
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Анімацію pulse-glow можна залишити або адаптувати кольори */
+    @keyframes pulse-glow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0.7), 0 0 10px #fff; /* Приклад адаптації */
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(var(--accent-color-rgb), 0), 0 0 20px #fff;
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0.7), 0 0 10px #fff;
+      }
+    }
+    /* Стилі для акордеону локацій - будуть адаптовані в style.css */
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+        <div class="site-logo">
+            <a href="/">
+                <img src="img/logo-genstar.jpg" alt="GEN STAR SERVICE - Ремонт бензотехніки" width="auto" height="60">
+            </a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#services">Послуги</a></li>
+                <li><a href="#locations">Локації</a></li>
+                <li><a href="#contact-form">Контакти</a></li>
+            </ul>
+        </nav>
+    </div>
+  </header>
+
+  <div class="main-banner"> <div class="banner-overlay"></div>
+    <div class="banner-content">
+        <h1>GEN STAR SERVICE</h1>
+        <p>Професійний ремонт генераторів, бензопил, газонокосарок та іншої бензо- та електротехніки. Швидко, якісно, надійно!</p>
+        <a href="#contact-form" class="cta-button">
+            <i class="fas fa-wrench"></i>
+            Замовити ремонт
+        </a>
+    </div>
+  </div>
+
+  <section class="services-section" id="services">
+    <div class="container">
+      <h2>Наші основні послуги</h2>
+      <div class="services-grid">
+        <div class="service-item">
+          <img src="img/icon-repair-generators.jpg" alt="Іконка Ремонт генераторів" 
+               onerror="this.onerror=null;this.src='https://placehold.co/200x150/0D1B2A/FFFFFF?text=Генератори';" >
+          <h3>Ремонт генераторів</h3>
+          <p>Діагностика та ремонт бензинових, дизельних та інверторних генераторів будь-якої складності.</p>
+        </div>
+        <div class="service-item">
+          <img src="img/icon-repair-benzotools.jpg" alt="Іконка Ремонт бензоінструменту"
+          onerror="this.onerror=null;this.src='https://placehold.co/200x150/0D1B2A/FFFFFF?text=Бензоінструмент';" >
+          <h3>Ремонт бензоінструменту</h3>
+          <p>Ремонт бензопил, мотокос, тримерів, повітродувок та іншого садового та будівельного бензоінструменту.</p>
+        </div>
+        <div class="service-item">
+          <img src="img/icon-repair-lawnmowers.jpg" alt="Іконка Ремонт газонокосарок"
+          onerror="this.onerror=null;this.src='https://placehold.co/200x150/0D1B2A/FFFFFF?text=Газонокосарки';" >
+          <h3>Ремонт газонокосарок</h3>
+          <p>Ремонт та обслуговування бензинових та електричних газонокосарок, садових тракторів.</p>
+        </div>
+        <div class="service-item">
+          <img src="img/icon-repair-power-tools.jpg" alt="Іконка Ремонт електроінструменту"
+          onerror="this.onerror=null;this.src='https://placehold.co/200x150/0D1B2A/FFFFFF?text=Електроінструмент';" >
+          <h3>Ремонт електроінструменту</h3>
+          <p>Ремонт дрилів, перфораторів, болгарок, шліфувальних машин та іншого професійного електроінструменту.</p>
+        </div>
+         <div class="service-item">
+          <img src="img/icon-repair-appliances.jpg" alt="Іконка Ремонт побутової техніки"
+          onerror="this.onerror=null;this.src='https://placehold.co/200x150/0D1B2A/FFFFFF?text=Побут.Техніка';" >
+          <h3>Ремонт побутової техніки</h3>
+          <p>Ремонт мікрохвильовок, пилососів, мультиварок та іншої дрібної побутової техніки.</p>
+        </div>
+        <div class="service-item">
+          <img src="img/icon-restaurant-equipment.jpg" alt="Іконка Ремонт ресторанного обладнання"
+          onerror="this.onerror=null;this.src='https://placehold.co/200x150/0D1B2A/FFFFFF?text=Для+ресторанів';" >
+          <h3>Ремонт обладнання для кафе/ресторанів</h3>
+          <p>Обслуговування та ремонт професійного кухонного обладнання.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="locations" id="locations">
+    <div class="container">
+      <h2>Наші локації</h2>
+      <div class="locations-wrapper">
+        <div class="location-card" onclick="toggleDetails(this)">
+          <div class="card-header">
+            <div>
+              <h3><i class="fas fa-tools"></i> Гостомель</h3>
+              <p>вул. Свято-Покровська, 108а (орієнтир)</p>
+            </div>
+            <div class="arrow"></div>
+          </div>
+          <div class="location-preview">
+            <img src="img/locations/genstar-hostomel.jpg" alt="Сервісний центр GEN STAR SERVICE у Гостомелі" class="location-img"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x400/0D1B2A/FFFFFF?text=GEN+STAR+SERVICE';" >
+          </div>
+          <div class="card-details">
+            <div class="details-section">
+              <h4><i class="fas fa-users"></i> Наші майстри</h4>
+              <div class="staff-list">
+                <div class="staff">
+                  <img src="img/staff/bohdan-genstar.jpg" alt="Богдан" onerror="this.onerror=null;this.src='https://placehold.co/60x60/cccccc/000000?text=БГ';">
+                  <p>Богдан</p>
+                  <small>Головний майстер</small>
+                </div>
+                <div class="staff">
+                  <img src="img/staff/luna-genstar.jpg" alt="Луна" onerror="this.onerror=null;this.src='https://placehold.co/60x60/cccccc/000000?text=ЛМ';">
+                  <p>Луна</p>
+                  <small>Адміністратор</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="details-section">
+              <h4><i class="far fa-clock"></i> Графік роботи</h4>
+              <div class="schedule-info">
+                <p>Пн–Пт: 09:00–18:00</p>
+                <p>Сб: 10:00–17:00 (уточнити)</p>
+                <p>Нд: вихідний</p>
+              </div>
+            </div>
+
+            <div class="details-section">
+              <h4><i class="fas fa-phone-alt"></i> Контакти</h4>
+              <div class="contact-info">
+                <p>
+                  <i class="fas fa-mobile-alt"></i>
+                  <a href="tel:+380XXXXXXXXX">+38 (XXX) XXX-XX-XX</a> (Основний)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact-form">
+    <div class="container">
+      <h2>Контакти</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-card">
+            <h3><i class="fas fa-phone-volume"></i> Телефони для зв'язку</h3>
+            <ul class="phone-list">
+              <li>
+                <i class="fas fa-mobile-alt"></i>
+                <div class="phone-info">
+                  <strong>Основний (Vodafone)</strong>
+                  <a href="tel:+380991252620">+38 (099) 125-26-20</a>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <div class="phone-info">
+                  <strong>Київстар</strong>
+                  <a href="tel:+380961090110">+38 (096) 109-01-10</a> (Залишити чи змінити?)
+                </div>
+              </li>
+               <li>
+                <i class="fab fa-viber"></i>
+                <div class="phone-info">
+                  <strong>Viber</strong>
+                  <a href="tel:+380991252620">+38 (099) 125-26-20</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <form class="contact-form" action="#" method="post">
+          <h3><i class="fas fa-paper-plane"></i> Надіслати повідомлення</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Ваше ім'я</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Ваш телефон</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Повідомлення</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit">Надіслати</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials-section">
+    <div class="container">
+      <h2>Відгуки клієнтів</h2>
+      <div class="testimonials-list">
+        <div class="testimonial-item">
+          <div class="testimonial-header">
+            <img src="img/rev/client1-genstar.jpg" alt="Сергій М." class="client-avatar" onerror="this.onerror=null;this.src='https://placehold.co/60x60/7F8C8D/FFFFFF?text=СМ';">
+            <div class="client-info">
+              <h4>Сергій М.</h4>
+              <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="testimonial-text">"Відремонтували мій генератор швидко та якісно. Дуже задоволений сервісом GEN STAR!"</p>
+        </div>
+
+        <div class="testimonial-item">
+          <div class="testimonial-header">
+            <img src="img/rev/client2-genstar.jpg" alt="Олена В." class="client-avatar" onerror="this.onerror=null;this.src='https://placehold.co/60x60/7F8C8D/FFFFFF?text=ОВ';">
+            <div class="client-info">
+              <h4>Олена В.</h4>
+              <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+          <p class="testimonial-text">"Приносила бензопилу, все зробили на вищому рівні. Рекомендую майстрів з GEN STAR SERVICE!"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>📍 Локація</h3>
+        <p>Гостомель, вул. Свято-Покровська, 108а (орієнтир)</p>
+        <p>(та інші локації, якщо будуть)</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>📞 Контакти</h3>
+        <ul class="footer-contacts">
+          <li>
+            <i class="fas fa-mobile-alt"></i>
+            <span><strong>Основний:</strong> <a href="tel:+380991252620">+38 (099) 125-26-20</a></span>
+          </li>
+          <li>
+            <i class="fas fa-phone"></i>
+            <span><strong>Київстар:</strong> <a href="tel:+380961090110">+38 (096) 109-01-10</a></span>
+          </li>
+          <li>
+            <i class="fab fa-viber"></i>
+            <span><strong>Viber:</strong> <a href="tel:+380991252620">+38 (099) 125-26-20</a></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>💌 Напиши нам</h3>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:genstarservice@gmail.com">genstarservice@gmail.com</a> (Приклад)</p>
+        <p><i class="far fa-clock"></i> Графік: Пн-Пт 09:00–18:00</p>
+        <div class="social-icons">
+          <a href="#" class="viber tooltip" onclick="showQR('viber', '+380991252620')">
+            <i class="fab fa-viber"></i>
+          </a>
+          <a href="#" class="telegram tooltip" onclick="showQR('telegram', 'GenStarServiceUA')"> <i class="fab fa-telegram"></i>
+          </a>
+          <a href="#" class="instagram tooltip" onclick="showQR('instagram', 'genstar.service')"> <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <p>&copy; 2023-2025 GEN STAR SERVICE — Всі права захищені</p>
+    </div>
+  </footer>
+
+  <div id="qrPopup" class="qr-popup">
+    <div class="qr-box">
+      <span class="close-btn" onclick="hideQR()">×</span>
+      <img id="qrImage" src="" alt="QR Code">
+    </div>
+  </div>
+
+  <script>
+    // Оновлена функція showQR для передачі даних
+    function showQR(platform, data) {
+      let urlToEncode = '';
+      switch(platform) {
+        case 'viber':
+          urlToEncode = `viber://chat?number=%2B${data.replace(/\D/g,'')}`; // Очищуємо номер від нецифрових символів
+          break;
+        case 'telegram':
+          urlToEncode = `https://t.me/${data}`;
+          break;
+        case 'instagram':
+          urlToEncode = `https://www.instagram.com/${data}`;
+          break;
+        default:
+          console.error('Unknown platform for QR code');
+          return;
+      }
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(urlToEncode)}`;
+      document.getElementById('qrImage').src = qrUrl;
+      document.getElementById('qrPopup').style.display = 'flex';
+    }
+
+    function hideQR() {
+      document.getElementById('qrPopup').style.display = 'none';
+    }
+
+    function toggleDetails(card) {
+      document.querySelectorAll('.location-card.open').forEach(openCard => {
+        if (openCard !== card) {
+          openCard.classList.remove('open');
+          // Ховаємо деталі і зображення попередньо відкритої картки
+          openCard.querySelector('.card-details').style.display = 'none';
+          openCard.querySelector('.location-preview').style.display = 'block';
+
+        }
+      });
+      card.classList.toggle('open');
+      const details = card.querySelector('.card-details');
+      const preview = card.querySelector('.location-preview');
+      if (card.classList.contains('open')) {
+        details.style.display = 'block';
+        preview.style.display = 'none'; // Ховаємо прев'ю при відкритті деталей
+      } else {
+        details.style.display = 'none';
+        preview.style.display = 'block'; // Показуємо прев'ю при закритті деталей
+      }
+    }
+
+    // Початкове приховування деталей та показ прев'ю для всіх карток
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.location-card').forEach(card => {
+            card.querySelector('.card-details').style.display = 'none';
+            card.querySelector('.location-preview').style.display = 'block';
+        });
+    });
+  </script>
+</body>
+</html>
+
