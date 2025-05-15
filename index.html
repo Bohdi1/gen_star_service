@@ -745,3 +745,34 @@
     </script>
 </body>
 </html>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
+
+<script>
+  // ініціалізація карти
+  const map = L.map('map').setView([50.56316, 30.22709], 15);
+
+  // підключаємо тайл-сервер OpenStreetMap
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // кастомна іконка (дані SVG в base64, щоб не лізти в assets)
+  const moonJokerIcon = L.icon({
+    iconUrl: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIGZpbGw9Im5vbmUiLz4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjI1NiIgZmlsbD0iI2Y5ZjNkMSIvPgogIDxwYXRoIGQ9Ik0xNzYgMTI0YzAgNDcgMTA4IDY2IDEyOCA2NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjAwIiBzdHJva2Utd2lkdGg9IjIwIi8+CiAgPHBhdGggZD0iTTI3MCAyMzBhMTIwIDEyMCAwIDEgMCAwLTI0MCAxMjAgMTIwIDAgMCAwIDAgMjQweiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjAwIiBzdHJva2Utd2lkdGg9IjIwIi8+CiAgPHBhdGggZD0iTTIyMiAyNjJhMjAgMjAgMCAxIDAgLTQwIDAgMjAgMjAgMCAwIDAgNDAgMCIgZmlsbD0iI2ZmZiIvPgogIDxwYXRoIGQ9Ik0yNzggMjYyYTIwIDIwIDAgMSAwIDQwIDAgMjAgMjAgMCAwIDAgLTQwIDAiIGZpbGw9IiNmZmYiLz4KICA8cGF0aCBkPSJNMTc4IDI3OGEyMCAyMCAwIDEgMCA0MCAyMCAyMCAwIDAgMCA0MC00MCIgZmlsbD0iI2ZmZiIvPgogIDxwYXRoIGQ9Ik0xNzkgMjg0bDI5IDQ4IDE4LTI1IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNSIvPgo8L3N2Zz4=',
+    iconSize: [48, 48],
+    iconAnchor: [24, 48],
+    popupAnchor: [0, -48],
+  });
+
+  // маркер з кастомною іконкою
+  L.marker([50.56316, 30.22709], { icon: moonJokerIcon })
+    .addTo(map)
+    .bindPopup("<b>GenStarService</b><br>вул. Свято-Покровська, 108а, Гостомель")
+    .openPopup();
+</script>
