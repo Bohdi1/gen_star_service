@@ -13,13 +13,13 @@
             scroll-behavior: smooth;
         }
         
-        /* Нова світла тема для Hero section, якщо не буде зображення */
         .hero-section-light {
             background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
         }
-        /* Якщо буде зображення, можна використовувати темний градієнт поверх нього */
+        
          .hero-section-dark-overlay {
-            background: linear-gradient(rgba(13, 27, 42, 0.7), rgba(13, 27, 42, 0.8)), url("https://placehold.co/1600x900/0D1B2A/1E293B?text=Service+Background") center/cover no-repeat;
+            /* Повертаємо темний фон з градієнтом та плейсхолдером для Hero section */
+            background: linear-gradient(rgba(13, 27, 42, 0.75), rgba(13, 27, 42, 0.9)), url("https://placehold.co/1600x900/0D1B2A/1E293B?text=Gen+Star+Service") center/cover no-repeat;
         }
 
 
@@ -29,7 +29,6 @@
         
         .service-card:hover {
             transform: translateY(-10px);
-            /* Тінь для світлої теми */
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
         }
 
@@ -87,7 +86,9 @@
         /* Custom colors for GenStar - Light Theme */
         :root {
             --genstar-blue-dark: #0A2463; /* Темно-синій з лого */
+            --genstar-blue-dark-hover: #081A4B; /* Трохи темніший синій для hover */
             --genstar-orange: #FF8C00;   /* Помаранчевий з лого */
+            --genstar-orange-dark: #E07B00; /* Темніший помаранчевий для hover */
             --genstar-light-bg: #F8F9FA; /* Дуже світло-сірий */
             --genstar-white-bg: #FFFFFF;
             --genstar-dark-text: #212529; /* Темно-сірий для тексту */
@@ -96,13 +97,14 @@
         }
 
         .bg-genstar-blue-dark { background-color: var(--genstar-blue-dark); }
+        .hover\:bg-genstar-blue-dark-hover:hover { background-color: var(--genstar-blue-dark-hover); }
         .text-genstar-blue-dark { color: var(--genstar-blue-dark); }
         .border-genstar-blue-dark { border-color: var(--genstar-blue-dark); }
 
         .bg-genstar-orange { background-color: var(--genstar-orange); }
+        .hover\:bg-genstar-orange-dark:hover { background-color: var(--genstar-orange-dark); }
         .text-genstar-orange { color: var(--genstar-orange); }
         .border-genstar-orange { border-color: var(--genstar-orange); }
-        .hover\:bg-genstar-orange-dark:hover { background-color: #E07B00; }
         .hover\:text-genstar-orange:hover { color: var(--genstar-orange); }
         
         .bg-genstar-light { background-color: var(--genstar-light-bg); }
@@ -112,9 +114,25 @@
         .text-genstar-medium { color: var(--genstar-medium-text); }
         .text-genstar-light-on-dark { color: var(--genstar-light-text-on-dark); }
 
+        .project-card-image-container {
+            height: 224px; /* 14rem or h-56 in Tailwind */
+            overflow: hidden;
+        }
+        .project-card-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure image covers the area, might crop */
+            transition: transform 0.3s ease;
+        }
+        .project-card-image-container:hover img {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
     </style>
 </head>
-<body class="bg-genstar-white text-genstar-dark"> <header class="bg-genstar-white shadow-md fixed w-full z-50"> <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+<body class="bg-genstar-white text-genstar-dark">
+    <header class="bg-genstar-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <a href="#home">
                     <img src="img/logo-genstar-light.jpg" alt="Gen Star Service Logo" class="h-12 md:h-14" onerror="this.onerror=null;this.src='https://placehold.co/180x60/FFFFFF/0A2463?text=GenStar+Service&font=montserrat';">
@@ -126,6 +144,7 @@
                 <a href="#about" class="nav-link text-genstar-medium hover:text-genstar-orange font-medium">Про нас</a>
                 <a href="#services" class="nav-link text-genstar-medium hover:text-genstar-orange font-medium">Послуги</a>
                 <a href="#locations" class="nav-link text-genstar-medium hover:text-genstar-orange font-medium">Локації</a>
+                <a href="#projects" class="nav-link text-genstar-medium hover:text-genstar-orange font-medium">Проекти</a>
                 <a href="#testimonials" class="nav-link text-genstar-medium hover:text-genstar-orange font-medium">Відгуки</a>
                 <a href="#contact" class="nav-link text-genstar-medium hover:text-genstar-orange font-medium">Контакти</a>
             </nav>
@@ -145,6 +164,7 @@
                 <a href="#about" class="text-genstar-medium hover:text-genstar-orange font-medium py-2">Про нас</a>
                 <a href="#services" class="text-genstar-medium hover:text-genstar-orange font-medium py-2">Послуги</a>
                 <a href="#locations" class="text-genstar-medium hover:text-genstar-orange font-medium py-2">Локації</a>
+                <a href="#projects" class="nav-link text-genstar-medium hover:text-genstar-orange font-medium py-2">Проекти</a>
                 <a href="#testimonials" class="text-genstar-medium hover:text-genstar-orange font-medium py-2">Відгуки</a>
                 <a href="#contact" class="text-genstar-medium hover:text-genstar-orange font-medium py-2">Контакти</a>
             </div>
@@ -152,9 +172,10 @@
     </header>
 
     <section id="home" class="hero-section-dark-overlay min-h-screen flex items-center justify-center text-white pt-16"> 
-    <div class="container mx-auto px-4 py-16 text-center">
+        <div class="container mx-auto px-4 py-16 text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-6 uppercase tracking-wide">Gen Star Service</h1>
-            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-gray-300"> Професійний ремонт генераторів, бензопил, газонокосарок та іншої бензо- та електротехніки. Швидко, якісно, надійно!
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-gray-300"> 
+                Професійний ремонт генераторів, бензопил, газонокосарок та іншої бензо- та електротехніки. Швидко, якісно, надійно!
             </p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
                 <a href="#services" class="bg-genstar-orange hover:bg-genstar-orange-dark text-white font-bold py-3 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
@@ -167,7 +188,8 @@
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-genstar-light"> <div class="container mx-auto px-4">
+    <section id="about" class="py-20 bg-genstar-light">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-genstar-dark mb-4">Про нас</h2>
                 <div class="w-24 h-1 bg-genstar-orange mx-auto mb-8"></div>
@@ -204,7 +226,7 @@
                 <div class="bg-genstar-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 border border-gray-200">
                     <div class="text-genstar-orange mb-4">
                          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                     </div>
                     <h3 class="text-xl font-semibold text-genstar-dark mb-3">Професіоналізм</h3>
@@ -216,7 +238,8 @@
         </div>
     </section>
 
-    <section id="services" class="py-20 bg-genstar-white"> <div class="container mx-auto px-4">
+    <section id="services" class="py-20 bg-genstar-white">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-genstar-dark mb-4">Наші послуги</h2>
                 <div class="w-24 h-1 bg-genstar-orange mx-auto mb-8"></div>
@@ -286,7 +309,7 @@
                     </div>
                     <h3 class="text-xl font-semibold text-genstar-dark mb-3 text-center">Ремонт електроінструменту</h3>
                     <p class="text-genstar-medium mb-4 text-center text-sm">
-                        Ремонт перфораторів, болгарок, шліфувальних машин та іншого професійного електроінструменту.
+                        Ремонт дрилів, перфораторів, болгарок, шліфувальних машин та іншого професійного електроінструменту.
                     </p>
                      <div class="text-center">
                         <a href="#contact" class="text-genstar-orange hover:underline font-medium inline-flex items-center text-sm">
@@ -337,7 +360,8 @@
         </div>
     </section>
     
-    <section id="locations" class="py-20 bg-genstar-light"> <div class="container mx-auto px-4">
+    <section id="locations" class="py-20 bg-genstar-light">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-genstar-dark mb-4">Наша локація</h2>
                 <div class="w-24 h-1 bg-genstar-orange mx-auto mb-8"></div>
@@ -349,12 +373,12 @@
             <div class="max-w-4xl mx-auto bg-genstar-white rounded-lg shadow-xl overflow-hidden border border-gray-200">
                 <div class="md:flex">
                     <div class="md:flex-shrink-0">
-                        <img class="h-64 w-full object-cover md:w-64" src="img/locations" alt="Сервісний центр Gen Star Service в Гостомелі" onerror="this.onerror=null;this.src='https://placehold.co/400x300/E9ECEF/FF8C00?text=Фото+Локації';">
+                        <img class="h-64 w-full object-cover md:w-64" src="img/locations/genstar-hostomel.jpg" alt="Сервісний центр Gen Star Service в Гостомелі" onerror="this.onerror=null;this.src='https://placehold.co/400x300/E9ECEF/FF8C00?text=Фото+Локації';">
                     </div>
                     <div class="p-8">
                         <div class="uppercase tracking-wide text-sm text-genstar-orange font-semibold">Сервісний центр</div>
                         <h3 class="block mt-1 text-2xl leading-tight font-bold text-genstar-dark hover:underline">Гостомель</h3>
-                        <p class="mt-2 text-genstar-medium">вул. Свято-Покровська, 108а</p>
+                        <p class="mt-2 text-genstar-medium">вул. Свято-Покровська, 108а (орієнтир)</p>
                         <div class="mt-6">
                             <h4 class="text-lg font-semibold text-genstar-orange mb-2">Графік роботи:</h4>
                             <p class="text-genstar-medium">Пн–Пт: 09:00 – 18:00</p>
@@ -379,7 +403,7 @@
                                     <p class="text-genstar-dark font-semibold text-sm">Юрій</p>
                                     <p class="text-gray-500 text-xs">Інженер</p>
                                 </div>
-                            </div>
+                             </div>
                         </div>
                     </div>
                 </div>
@@ -387,7 +411,8 @@
         </div>
     </section>
 
-    <section id="projects" class="py-20 bg-genstar-white"> <div class="container mx-auto px-4">
+    <section id="projects" class="py-20 bg-genstar-white">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-genstar-dark mb-4">Наші проекти (Приклади)</h2>
                 <div class="w-24 h-1 bg-genstar-orange mx-auto mb-8"></div>
@@ -398,7 +423,8 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-genstar-light rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 border border-gray-200">
-                    <div class="h-56 bg-gray-300 flex items-center justify-center"> <i class="fas fa-hard-hat fa-4x text-genstar-orange opacity-75"></i>
+                    <div class="project-card-image-container">
+                        <img src="img/locations/project/Generators.jpg" alt="Відновлення парку генераторів" onerror="this.onerror=null;this.src='https://placehold.co/600x400/CCCCCC/777777?text=Проект+1';">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-genstar-dark mb-2">Відновлення парку генераторів</h3>
@@ -413,8 +439,8 @@
                 </div>
                 
                 <div class="bg-genstar-light rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 border border-gray-200">
-                     <div class="h-56 bg-gray-300 flex items-center justify-center">
-                        <i class="fas fa-tools fa-4x text-genstar-orange opacity-75"></i>
+                     <div class="project-card-image-container">
+                        <img src="img/locations/project/Agro.jpg" alt="Сервіс для агрофірми" onerror="this.onerror=null;this.src='https://placehold.co/600x400/CCCCCC/777777?text=Проект+2';">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-genstar-dark mb-2">Сервіс для агрофірми</h3>
@@ -429,8 +455,8 @@
                 </div>
                 
                 <div class="bg-genstar-light rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 border border-gray-200">
-                    <div class="h-56 bg-gray-300 flex items-center justify-center">
-                         <i class="fas fa-cogs fa-4x text-genstar-orange opacity-75"></i>
+                    <div class="project-card-image-container">
+                        <img src="img/locations/project/season.jpg" alt="Підготовка техніки до сезону" onerror="this.onerror=null;this.src='https://placehold.co/600x400/CCCCCC/777777?text=Проект+3';">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-genstar-dark mb-2">Підготовка техніки до сезону</h3>
@@ -456,7 +482,8 @@
         </div>
     </section>
 
-    <section id="testimonials" class="py-20 bg-genstar-light"> <div class="container mx-auto px-4">
+    <section id="testimonials" class="py-20 bg-genstar-light">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-genstar-dark mb-4">Відгуки клієнтів</h2>
                 <div class="w-24 h-1 bg-genstar-orange mx-auto mb-8"></div>
@@ -468,7 +495,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="testimonial-card bg-genstar-white p-8 rounded-lg shadow-lg border border-gray-200">
                     <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 flex"> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                     </div>
                     <p class="text-genstar-medium mb-6 italic">
@@ -522,7 +550,8 @@
         </div>
     </section>
 
-    <section id="contact" class="py-20 bg-genstar-white"> <div class="container mx-auto px-4">
+    <section id="contact" class="py-20 bg-genstar-white">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-genstar-dark mb-4">Зв'яжіться з нами</h2>
                 <div class="w-24 h-1 bg-genstar-orange mx-auto mb-8"></div>
@@ -620,7 +649,8 @@
         </div>
     </section>
 
-    <footer class="bg-genstar-blue-dark py-10 border-t-4 border-genstar-orange"> <div class="container mx-auto px-4">
+    <footer class="bg-genstar-blue-dark py-10 border-t-4 border-genstar-orange">
+        <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
                 <div>
                      <img src="img/logo-genstar-light.jpg" alt="Gen Star Service Logo Footer" class="h-10 mb-4 mx-auto md:mx-0" onerror="this.onerror=null;this.src='https://placehold.co/150x40/0A2463/F8F9FA?text=GenStar&font=montserrat';">
@@ -665,12 +695,12 @@
         });
 
         // Close mobile menu when a link is clicked
-        document.querySelectorAll('#mobile-menu a, .nav-link').forEach(link => { // Додано .nav-link для закриття меню і на десктопі при кліку на якір
+        document.querySelectorAll('#mobile-menu a, .nav-link').forEach(link => { 
             link.addEventListener('click', (e) => {
                 if (mobileMenu.classList.contains('hidden') === false) {
                      mobileMenu.classList.add('hidden');
                 }
-                // Плавна прокрутка залишається
+                
                 const targetId = link.getAttribute('href');
                 if (targetId.startsWith('#')) {
                     e.preventDefault();
