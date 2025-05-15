@@ -949,7 +949,7 @@ header .container {
         --header-height: 70px; /* Можлива зміна висоти шапки */
     }
     .site-logo img {
-        height: 40px; /* Менше лого */
+        height: 80px; /* Менше лого */
     }
     .banner-content {
         padding: 1.5rem;
