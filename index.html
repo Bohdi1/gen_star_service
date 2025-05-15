@@ -1,453 +1,714 @@
 <!DOCTYPE html>
 <html lang="uk">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GEN STAR SERVICE - Ремонт бензотехніки та генераторів</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    /* Стилі, які були вбудовані в HTML, будуть перенесені в style.css або адаптовані */
-    /* Основні зміни кольорів будуть в style.css через змінні */
-
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .social-icons a {
-      width: 60px;
-      height: 60px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      font-size: 1.8rem;
-      color: white; /* Буде залежати від --secondary-color */
-      background: #222; /* Буде залежати від --primary-color або іншої змінної */
-      position: relative;
-      z-index: 1;
-      overflow: visible;
-      transition: 0.3s ease;
-      box-shadow: 0 0 10px #000; /* Адаптувати тінь */
-    }
-
-    .social-icons a:hover {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Адаптувати тінь */
-    }
-
-    /* Кольори для іконок соцмереж будуть адаптовані або залишені, якщо вони контрастують */
-    .social-icons a.viber {
-      background: #7360f2; /* Можливо, замінити на --accent-color або інший */
-    }
-
-    .social-icons a.telegram {
-      background: #0088cc; /* Можливо, замінити на --accent-color або інший */
-    }
-
-    .social-icons a.instagram {
-      background: radial-gradient(circle at 30% 30%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 100%); /* Можливо, замінити */
-    }
-
-    .qr-popup {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .qr-box {
-      background: #fff; /* Адаптувати до --secondary-color */
-      padding: 2rem;
-      border-radius: 1rem;
-      text-align: center;
-      position: relative;
-    }
-
-    .qr-box img {
-      width: 200px;
-      height: 200px;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #333; /* Адаптувати */
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Анімацію pulse-glow можна залишити або адаптувати кольори */
-    @keyframes pulse-glow {
-      0% {
-        box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0.7), 0 0 10px #fff; /* Приклад адаптації */
-      }
-      70% {
-        box-shadow: 0 0 0 15px rgba(var(--accent-color-rgb), 0), 0 0 20px #fff;
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0.7), 0 0 10px #fff;
-      }
-    }
-    /* Стилі для акордеону локацій - будуть адаптовані в style.css */
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="container">
-        <div class="site-logo">
-            <a href="/">
-                <img src="img/logo-genstar.jpg" alt="GEN STAR SERVICE - Ремонт бензотехніки" width="auto" height="60">
-            </a>
-        </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="#services">Послуги</a></li>
-                <li><a href="#locations">Локації</a></li>
-                <li><a href="#contact-form">Контакти</a></li>
-            </ul>
-        </nav>
-    </div>
-  </header>
-
-  <div class="main-banner"> <div class="banner-overlay"></div>
-    <div class="banner-content">
-        <h1>GEN STAR SERVICE</h1>
-        <p>Професійний ремонт генераторів, бензопил, газонокосарок та іншої бензо- та електротехніки. Швидко, якісно, надійно!</p>
-        <a href="#contact-form" class="cta-button">
-            <i class="fas fa-wrench"></i>
-            Замовити ремонт
-        </a>
-    </div>
-  </div>
-
-  <section class="services-section" id="services">
-    <div class="container">
-      <h2>Наші основні послуги</h2>
-      <div class="services-grid">
-        <div class="service-item">
-          <img src="img/icon-repair-generators.jpg" alt="Іконка Ремонт генераторів" 
-               onerror="this.onerror=null;this.src='https://placehold.co/200x150/0D1B2A/FFFFFF?text=Генератори';" >
-          <h3>Ремонт генераторів</h3>
-          <p>Діагностика та ремонт бензинових, дизельних та інверторних генераторів будь-якої складності.</p>
-        </div>
-        <div class="service-item">
-          <img src="img/icon-repair-benzotools.jpg" alt="Іконка Ремонт бензоінструменту"
-          onerror="this.onerror=null;this.src='https://placehold.co/200x150/0D1B2A/FFFFFF?text=Бензоінструмент';" >
-          <h3>Ремонт бензоінструменту</h3>
-          <p>Ремонт бензопил, мотокос, тримерів, повітродувок та іншого садового та будівельного бензоінструменту.</p>
-        </div>
-        <div class="service-item">
-          <img src="img/icon-repair-lawnmowers.jpg" alt="Іконка Ремонт газонокосарок"
-          onerror="this.onerror=null;this.src='https://placehold.co/200x150/0D1B2A/FFFFFF?text=Газонокосарки';" >
-          <h3>Ремонт газонокосарок</h3>
-          <p>Ремонт та обслуговування бензинових та електричних газонокосарок, садових тракторів.</p>
-        </div>
-        <div class="service-item">
-          <img src="img/icon-repair-power-tools.jpg" alt="Іконка Ремонт електроінструменту"
-          onerror="this.onerror=null;this.src='https://placehold.co/200x150/0D1B2A/FFFFFF?text=Електроінструмент';" >
-          <h3>Ремонт електроінструменту</h3>
-          <p>Ремонт дрилів, перфораторів, болгарок, шліфувальних машин та іншого професійного електроінструменту.</p>
-        </div>
-         <div class="service-item">
-          <img src="img/icon-repair-appliances.jpg" alt="Іконка Ремонт побутової техніки"
-          onerror="this.onerror=null;this.src='https://placehold.co/200x150/0D1B2A/FFFFFF?text=Побут.Техніка';" >
-          <h3>Ремонт побутової техніки</h3>
-          <p>Ремонт мікрохвильовок, пилососів, мультиварок та іншої дрібної побутової техніки.</p>
-        </div>
-        <div class="service-item">
-          <img src="img/icon-restaurant-equipment.jpg" alt="Іконка Ремонт ресторанного обладнання"
-          onerror="this.onerror=null;this.src='https://placehold.co/200x150/0D1B2A/FFFFFF?text=Для+ресторанів';" >
-          <h3>Ремонт обладнання для кафе/ресторанів</h3>
-          <p>Обслуговування та ремонт професійного кухонного обладнання.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="locations" id="locations">
-    <div class="container">
-      <h2>Наші локації</h2>
-      <div class="locations-wrapper">
-        <div class="location-card" onclick="toggleDetails(this)">
-          <div class="card-header">
-            <div>
-              <h3><i class="fas fa-tools"></i> Гостомель</h3>
-              <p>вул. Свято-Покровська, 108а (орієнтир)</p>
-            </div>
-            <div class="arrow"></div>
-          </div>
-          <div class="location-preview">
-            <img src="img/locations/genstar-hostomel.jpg" alt="Сервісний центр GEN STAR SERVICE у Гостомелі" class="location-img"
-            onerror="this.onerror=null;this.src='https://placehold.co/600x400/0D1B2A/FFFFFF?text=GEN+STAR+SERVICE';" >
-          </div>
-          <div class="card-details">
-            <div class="details-section">
-              <h4><i class="fas fa-users"></i> Наші майстри</h4>
-              <div class="staff-list">
-                <div class="staff">
-                  <img src="img/staff/bohdan-genstar.jpg" alt="Богдан" onerror="this.onerror=null;this.src='https://placehold.co/60x60/cccccc/000000?text=БГ';">
-                  <p>Богдан</p>
-                  <small>Головний майстер</small>
-                </div>
-                <div class="staff">
-                  <img src="img/staff/luna-genstar.jpg" alt="Луна" onerror="this.onerror=null;this.src='https://placehold.co/60x60/cccccc/000000?text=ЛМ';">
-                  <p>Луна</p>
-                  <small>Адміністратор</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="details-section">
-              <h4><i class="far fa-clock"></i> Графік роботи</h4>
-              <div class="schedule-info">
-                <p>Пн–Пт: 09:00–18:00</p>
-                <p>Сб: 10:00–17:00 (уточнити)</p>
-                <p>Нд: вихідний</p>
-              </div>
-            </div>
-
-            <div class="details-section">
-              <h4><i class="fas fa-phone-alt"></i> Контакти</h4>
-              <div class="contact-info">
-                <p>
-                  <i class="fas fa-mobile-alt"></i>
-                  <a href="tel:+380XXXXXXXXX">+38 (XXX) XXX-XX-XX</a> (Основний)
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-    </div>
-  </section>
-
-  <section class="contact-section" id="contact-form">
-    <div class="container">
-      <h2>Контакти</h2>
-      <div class="contact-content">
-        <div class="contact-info">
-          <div class="contact-card">
-            <h3><i class="fas fa-phone-volume"></i> Телефони для зв'язку</h3>
-            <ul class="phone-list">
-              <li>
-                <i class="fas fa-mobile-alt"></i>
-                <div class="phone-info">
-                  <strong>Основний (Vodafone)</strong>
-                  <a href="tel:+380991252620">+38 (099) 125-26-20</a>
-                </div>
-              </li>
-              <li>
-                <i class="fas fa-phone"></i>
-                <div class="phone-info">
-                  <strong>Київстар</strong>
-                  <a href="tel:+380961090110">+38 (096) 109-01-10</a> (Залишити чи змінити?)
-                </div>
-              </li>
-               <li>
-                <i class="fab fa-viber"></i>
-                <div class="phone-info">
-                  <strong>Viber</strong>
-                  <a href="tel:+380991252620">+38 (099) 125-26-20</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <form class="contact-form" action="#" method="post">
-          <h3><i class="fas fa-paper-plane"></i> Надіслати повідомлення</h3>
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="name">Ваше ім'я</label>
-              <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Ваш телефон</label>
-              <input type="tel" id="phone" name="phone" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="message">Повідомлення</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-          </div>
-          <button type="submit">Надіслати</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <section class="testimonials-section">
-    <div class="container">
-      <h2>Відгуки клієнтів</h2>
-      <div class="testimonials-list">
-        <div class="testimonial-item">
-          <div class="testimonial-header">
-            <img src="img/rev/client1-genstar.jpg" alt="Сергій М." class="client-avatar" onerror="this.onerror=null;this.src='https://placehold.co/60x60/7F8C8D/FFFFFF?text=СМ';">
-            <div class="client-info">
-              <h4>Сергій М.</h4>
-              <div class="rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <p class="testimonial-text">"Відремонтували мій генератор швидко та якісно. Дуже задоволений сервісом GEN STAR!"</p>
-        </div>
-
-        <div class="testimonial-item">
-          <div class="testimonial-header">
-            <img src="img/rev/client2-genstar.jpg" alt="Олена В." class="client-avatar" onerror="this.onerror=null;this.src='https://placehold.co/60x60/7F8C8D/FFFFFF?text=ОВ';">
-            <div class="client-info">
-              <h4>Олена В.</h4>
-              <div class="rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-              </div>
-            </div>
-          </div>
-          <p class="testimonial-text">"Приносила бензопилу, все зробили на вищому рівні. Рекомендую майстрів з GEN STAR SERVICE!"</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="main-footer">
-    <div class="footer-container">
-      <div class="footer-section">
-        <h3>📍 Локація</h3>
-        <p>Гостомель, вул. Свято-Покровська, 108а (орієнтир)</p>
-        <p>(та інші локації, якщо будуть)</p>
-      </div>
-
-      <div class="footer-section">
-        <h3>📞 Контакти</h3>
-        <ul class="footer-contacts">
-          <li>
-            <i class="fas fa-mobile-alt"></i>
-            <span><strong>Основний:</strong> <a href="tel:+380991252620">+38 (099) 125-26-20</a></span>
-          </li>
-          <li>
-            <i class="fas fa-phone"></i>
-            <span><strong>Київстар:</strong> <a href="tel:+380961090110">+38 (096) 109-01-10</a></span>
-          </li>
-          <li>
-            <i class="fab fa-viber"></i>
-            <span><strong>Viber:</strong> <a href="tel:+380991252620">+38 (099) 125-26-20</a></span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="footer-section">
-        <h3>💌 Напиши нам</h3>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:genstarservice@gmail.com">genstarservice@gmail.com</a> (Приклад)</p>
-        <p><i class="far fa-clock"></i> Графік: Пн-Пт 09:00–18:00</p>
-        <div class="social-icons">
-          <a href="#" class="viber tooltip" onclick="showQR('viber', '+380991252620')">
-            <i class="fab fa-viber"></i>
-          </a>
-          <a href="#" class="telegram tooltip" onclick="showQR('telegram', 'GenStarServiceUA')"> <i class="fab fa-telegram"></i>
-          </a>
-          <a href="#" class="instagram tooltip" onclick="showQR('instagram', 'genstar.service')"> <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-copyright">
-      <p>&copy; 2023-2025 GEN STAR SERVICE — Всі права захищені</p>
-    </div>
-  </footer>
-
-  <div id="qrPopup" class="qr-popup">
-    <div class="qr-box">
-      <span class="close-btn" onclick="hideQR()">×</span>
-      <img id="qrImage" src="" alt="QR Code">
-    </div>
-  </div>
-
-  <script>
-    // Оновлена функція showQR для передачі даних
-    function showQR(platform, data) {
-      let urlToEncode = '';
-      switch(platform) {
-        case 'viber':
-          urlToEncode = `viber://chat?number=%2B${data.replace(/\D/g,'')}`; // Очищуємо номер від нецифрових символів
-          break;
-        case 'telegram':
-          urlToEncode = `https://t.me/${data}`;
-          break;
-        case 'instagram':
-          urlToEncode = `https://www.instagram.com/${data}`;
-          break;
-        default:
-          console.error('Unknown platform for QR code');
-          return;
-      }
-      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(urlToEncode)}`;
-      document.getElementById('qrImage').src = qrUrl;
-      document.getElementById('qrPopup').style.display = 'flex';
-    }
-
-    function hideQR() {
-      document.getElementById('qrPopup').style.display = 'none';
-    }
-
-    function toggleDetails(card) {
-      document.querySelectorAll('.location-card.open').forEach(openCard => {
-        if (openCard !== card) {
-          openCard.classList.remove('open');
-          // Ховаємо деталі і зображення попередньо відкритої картки
-          openCard.querySelector('.card-details').style.display = 'none';
-          openCard.querySelector('.location-preview').style.display = 'block';
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gen Star Service - Ремонт генераторів та бензотехніки</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
         }
-      });
-      card.classList.toggle('open');
-      const details = card.querySelector('.card-details');
-      const preview = card.querySelector('.location-preview');
-      if (card.classList.contains('open')) {
-        details.style.display = 'block';
-        preview.style.display = 'none'; // Ховаємо прев'ю при відкритті деталей
-      } else {
-        details.style.display = 'none';
-        preview.style.display = 'block'; // Показуємо прев'ю при закритті деталей
-      }
-    }
+        
+        /* Нова світла тема для Hero section, якщо не буде зображення */
+        .hero-section-light {
+            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+        }
+        /* Якщо буде зображення, можна використовувати темний градієнт поверх нього */
+         .hero-section-dark-overlay {
+            background: linear-gradient(rgba(13, 27, 42, 0.7), rgba(13, 27, 42, 0.8)), url("https://placehold.co/1600x900/0D1B2A/1E293B?text=Service+Background") center/cover no-repeat;
+        }
 
-    // Початкове приховування деталей та показ прев'ю для всіх карток
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.location-card').forEach(card => {
-            card.querySelector('.card-details').style.display = 'none';
-            card.querySelector('.location-preview').style.display = 'block';
+
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            /* Тінь для світлої теми */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #FF8C00; /* Accent color */
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.hidden {
+            transform: translateX(-100%);
+        }
+
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+
+        .contact-input:focus {
+            border-color: #FF8C00; /* Accent color */
+            box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.3);
+        }
+
+        .scroll-to-top {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Custom colors for GenStar - Light Theme */
+        :root {
+            --genstar-blue-dark: #0A2463; /* Темно-синій з лого */
+            --genstar-orange: #FF8C00;   /* Помаранчевий з лого */
+            --genstar-light-bg: #F8F9FA; /* Дуже світло-сірий */
+            --genstar-white-bg: #FFFFFF;
+            --genstar-dark-text: #212529; /* Темно-сірий для тексту */
+            --genstar-medium-text: #495057; /* Середньо-сірий для вторинного тексту */
+            --genstar-light-text-on-dark: #F8F9FA; /* Світлий текст для темних фонів (футер) */
+        }
+
+        .bg-genstar-blue-dark { background-color: var(--genstar-blue-dark); }
+        .text-genstar-blue-dark { color: var(--genstar-blue-dark); }
+        .border-genstar-blue-dark { border-color: var(--genstar-blue-dark); }
+
+        .bg-genstar-orange { background-color: var(--genstar-orange); }
+        .text-genstar-orange { color: var(--genstar-orange); }
+        .border-genstar-orange { border-color: var(--genstar-orange); }
+        .hover\:bg-genstar-orange-dark:hover { background-color: #E07B00; }
+        .hover\:text-genstar-orange:hover { color: var(--genstar-orange); }
+        
+        .bg-genstar-light { background-color: var(--genstar-light-bg); }
+        .bg-genstar-white { background-color: var(--genstar-white-bg); }
+
+        .text-genstar-dark { color: var(--genstar-dark-text); }
+        .text-genstar-medium { color: var(--genstar-medium-text); }
+        .text-genstar-light-on-dark { color: var(--genstar-light-text-on-dark); }
+
+    </style>
+</head>
+<body class="bg-genstar-white text-genstar-dark"> <header class="bg-genstar-white shadow-md fixed w-full z-50"> <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="#home">
+                    <img src="img/logo-genstar-light.jpg" alt="Gen Star Service Logo" class="h-12 md:h-14" onerror="this.onerror=null;this.src='https://placehold.co/180x60/FFFFFF/0A2463?text=GenStar+Service&font=montserrat';">
+                </a>
+            </div>
+            
+            <nav class="hidden md:flex space-x-6">
+                <a href="#home" class="nav-link text-genstar-medium hover:text-genstar-orange font-medium">Головна</a>
+                <a href="#about" class="nav-link text-genstar-medium hover:text-genstar-orange font-medium">Про нас</a>
+                <a href="#services" class="nav-link text-genstar-medium hover:text-genstar-orange font-medium">Послуги</a>
+                <a href="#locations" class="nav-link text-genstar-medium hover:text-genstar-orange font-medium">Локації</a>
+                <a href="#testimonials" class="nav-link text-genstar-medium hover:text-genstar-orange font-medium">Відгуки</a>
+                <a href="#contact" class="nav-link text-genstar-medium hover:text-genstar-orange font-medium">Контакти</a>
+            </nav>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-genstar-medium hover:text-genstar-orange focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="mobile-menu hidden md:hidden bg-genstar-white shadow-lg absolute w-full border-t border-gray-200">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#home" class="text-genstar-medium hover:text-genstar-orange font-medium py-2">Головна</a>
+                <a href="#about" class="text-genstar-medium hover:text-genstar-orange font-medium py-2">Про нас</a>
+                <a href="#services" class="text-genstar-medium hover:text-genstar-orange font-medium py-2">Послуги</a>
+                <a href="#locations" class="text-genstar-medium hover:text-genstar-orange font-medium py-2">Локації</a>
+                <a href="#testimonials" class="text-genstar-medium hover:text-genstar-orange font-medium py-2">Відгуки</a>
+                <a href="#contact" class="text-genstar-medium hover:text-genstar-orange font-medium py-2">Контакти</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section-dark-overlay min-h-screen flex items-center justify-center text-white pt-16"> 
+    <div class="container mx-auto px-4 py-16 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 uppercase tracking-wide">Gen Star Service</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-gray-300"> Професійний ремонт генераторів, бензопил, газонокосарок та іншої бензо- та електротехніки. Швидко, якісно, надійно!
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#services" class="bg-genstar-orange hover:bg-genstar-orange-dark text-white font-bold py-3 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                    Наші послуги
+                </a>
+                <a href="#contact" class="bg-transparent border-2 border-genstar-orange hover:bg-genstar-orange hover:text-white text-genstar-orange font-bold py-3 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+                    Зв'язатися з нами
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-genstar-light"> <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-genstar-dark mb-4">Про нас</h2>
+                <div class="w-24 h-1 bg-genstar-orange mx-auto mb-8"></div>
+                <p class="text-lg text-genstar-medium max-w-3xl mx-auto">
+                    Gen Star Service - це команда досвідчених фахівців, що спеціалізується на ремонті та обслуговуванні широкого спектру техніки. Ми прагнемо надавати надійні та ефективні рішення для кожного клієнта.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="bg-genstar-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 border border-gray-200">
+                    <div class="text-genstar-orange mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-genstar-dark mb-3">Надійність</h3>
+                    <p class="text-genstar-medium">
+                        Ми гарантуємо якість наших послуг та використовуємо тільки перевірені запчастини. Ваша техніка в надійних руках.
+                    </p>
+                </div>
+                
+                <div class="bg-genstar-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 border border-gray-200">
+                    <div class="text-genstar-orange mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-genstar-dark mb-3">Швидкість</h3>
+                    <p class="text-genstar-medium">
+                        Розуміємо, наскільки важлива ваша техніка, тому виконуємо ремонт максимально оперативно без шкоди для якості.
+                    </p>
+                </div>
+                
+                <div class="bg-genstar-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 border border-gray-200">
+                    <div class="text-genstar-orange mb-4">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-genstar-dark mb-3">Професіоналізм</h3>
+                    <p class="text-genstar-medium">
+                        Наші майстри мають багаторічний досвід та постійно вдосконалюють свої навички для вирішення найскладніших завдань.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-genstar-white"> <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-genstar-dark mb-4">Наші послуги</h2>
+                <div class="w-24 h-1 bg-genstar-orange mx-auto mb-8"></div>
+                <p class="text-lg text-genstar-medium max-w-3xl mx-auto">
+                    Ми спеціалізуємося на ремонті та обслуговуванні різноманітної техніки, забезпечуючи її довгу та надійну роботу.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-genstar-light p-6 rounded-lg shadow-lg border border-gray-200">
+                    <div class="bg-genstar-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto ring-2 ring-genstar-orange">
+                        <i class="fas fa-bolt fa-2x text-genstar-orange"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-genstar-dark mb-3 text-center">Ремонт генераторів</h3>
+                    <p class="text-genstar-medium mb-4 text-center text-sm">
+                        Діагностика та ремонт бензинових, дизельних та інверторних генераторів будь-якої складності.
+                    </p>
+                    <div class="text-center">
+                        <a href="#contact" class="text-genstar-orange hover:underline font-medium inline-flex items-center text-sm">
+                            Замовити ремонт
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card bg-genstar-light p-6 rounded-lg shadow-lg border border-gray-200">
+                    <div class="bg-genstar-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto ring-2 ring-genstar-orange">
+                        <i class="fas fa-gas-pump fa-2x text-genstar-orange"></i> 
+                    </div>
+                    <h3 class="text-xl font-semibold text-genstar-dark mb-3 text-center">Ремонт бензоінструменту</h3>
+                    <p class="text-genstar-medium mb-4 text-center text-sm">
+                        Ремонт бензопил, мотокос, тримерів, повітродувок та іншого садового та будівельного бензоінструменту.
+                    </p>
+                     <div class="text-center">
+                        <a href="#contact" class="text-genstar-orange hover:underline font-medium inline-flex items-center text-sm">
+                            Замовити ремонт
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card bg-genstar-light p-6 rounded-lg shadow-lg border border-gray-200">
+                    <div class="bg-genstar-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto ring-2 ring-genstar-orange">
+                        <i class="fas fa-leaf fa-2x text-genstar-orange"></i> 
+                    </div>
+                    <h3 class="text-xl font-semibold text-genstar-dark mb-3 text-center">Ремонт газонокосарок</h3>
+                    <p class="text-genstar-medium mb-4 text-center text-sm">
+                        Ремонт та обслуговування бензинових та електричних газонокосарок, садових тракторів.
+                    </p>
+                     <div class="text-center">
+                        <a href="#contact" class="text-genstar-orange hover:underline font-medium inline-flex items-center text-sm">
+                            Замовити ремонт
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card bg-genstar-light p-6 rounded-lg shadow-lg border border-gray-200">
+                    <div class="bg-genstar-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto ring-2 ring-genstar-orange">
+                        <i class="fas fa-tools fa-2x text-genstar-orange"></i> 
+                    </div>
+                    <h3 class="text-xl font-semibold text-genstar-dark mb-3 text-center">Ремонт електроінструменту</h3>
+                    <p class="text-genstar-medium mb-4 text-center text-sm">
+                        Ремонт дрилів, перфораторів, болгарок, шліфувальних машин та іншого професійного електроінструменту.
+                    </p>
+                     <div class="text-center">
+                        <a href="#contact" class="text-genstar-orange hover:underline font-medium inline-flex items-center text-sm">
+                            Замовити ремонт
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                 <div class="service-card bg-genstar-light p-6 rounded-lg shadow-lg border border-gray-200">
+                    <div class="bg-genstar-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto ring-2 ring-genstar-orange">
+                        <i class="fas fa-blender-phone fa-2x text-genstar-orange"></i> 
+                    </div>
+                    <h3 class="text-xl font-semibold text-genstar-dark mb-3 text-center">Ремонт побутової техніки</h3>
+                    <p class="text-genstar-medium mb-4 text-center text-sm">
+                        Ремонт мікрохвильовок, пилососів, мультиварок та іншої дрібної побутової техніки.
+                    </p>
+                     <div class="text-center">
+                        <a href="#contact" class="text-genstar-orange hover:underline font-medium inline-flex items-center text-sm">
+                            Замовити ремонт
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card bg-genstar-light p-6 rounded-lg shadow-lg border border-gray-200">
+                    <div class="bg-genstar-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto ring-2 ring-genstar-orange">
+                        <i class="fas fa-utensils fa-2x text-genstar-orange"></i> 
+                    </div>
+                    <h3 class="text-xl font-semibold text-genstar-dark mb-3 text-center">Ремонт для кафе/ресторанів</h3>
+                    <p class="text-genstar-medium mb-4 text-center text-sm">
+                        Обслуговування та ремонт професійного кухонного обладнання для закладів громадського харчування.
+                    </p>
+                     <div class="text-center">
+                        <a href="#contact" class="text-genstar-orange hover:underline font-medium inline-flex items-center text-sm">
+                            Замовити ремонт
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="locations" class="py-20 bg-genstar-light"> <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-genstar-dark mb-4">Наша локація</h2>
+                <div class="w-24 h-1 bg-genstar-orange mx-auto mb-8"></div>
+                <p class="text-lg text-genstar-medium max-w-3xl mx-auto">
+                    Завітайте до нашого сервісного центру для діагностики та ремонту вашої техніки.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-genstar-white rounded-lg shadow-xl overflow-hidden border border-gray-200">
+                <div class="md:flex">
+                    <div class="md:flex-shrink-0">
+                        <img class="h-64 w-full object-cover md:w-64" src="img/locations/genstar-hostomel.jpg" alt="Сервісний центр Gen Star Service в Гостомелі" onerror="this.onerror=null;this.src='https://placehold.co/400x300/E9ECEF/FF8C00?text=Фото+Локації';">
+                    </div>
+                    <div class="p-8">
+                        <div class="uppercase tracking-wide text-sm text-genstar-orange font-semibold">Сервісний центр</div>
+                        <h3 class="block mt-1 text-2xl leading-tight font-bold text-genstar-dark hover:underline">Гостомель</h3>
+                        <p class="mt-2 text-genstar-medium">вул. Свято-Покровська, 108а (орієнтир)</p>
+                        <div class="mt-6">
+                            <h4 class="text-lg font-semibold text-genstar-orange mb-2">Графік роботи:</h4>
+                            <p class="text-genstar-medium">Пн–Пт: 09:00 – 18:00</p>
+                            <p class="text-genstar-medium">Сб: 10:00 – 17:00 (уточнити)</p>
+                            <p class="text-genstar-medium">Нд: вихідний</p>
+                        </div>
+                        <div class="mt-4">
+                             <h4 class="text-lg font-semibold text-genstar-orange mb-2">Наші майстри:</h4>
+                             <div class="flex items-center mt-2">
+                                <img class="h-10 w-10 rounded-full mr-3 border-2 border-genstar-orange" src="img/staff/bohdan-genstar.jpg" alt="Богдан, головний майстер" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FF8C00/FFFFFF?text=БМ';">
+                                <div>
+                                    <p class="text-genstar-dark font-semibold">Богдан</p>
+                                    <p class="text-gray-500 text-sm">Головний майстер</p>
+                                </div>
+                            </div>
+                             <div class="flex items-center mt-2">
+                                <img class="h-10 w-10 rounded-full mr-3 border-2 border-genstar-orange" src="img/staff/luna-genstar.jpg" alt="Луна, адміністратор" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FF8C00/FFFFFF?text=ЛА';">
+                                <div>
+                                    <p class="text-genstar-dark font-semibold">Луна</p>
+                                    <p class="text-gray-500 text-sm">Адміністратор</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-genstar-white"> <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-genstar-dark mb-4">Наші проекти (Приклади)</h2>
+                <div class="w-24 h-1 bg-genstar-orange mx-auto mb-8"></div>
+                <p class="text-lg text-genstar-medium max-w-3xl mx-auto">
+                    Демонстрація якості та професіоналізму нашої роботи на прикладі виконаних завдань.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-genstar-light rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 border border-gray-200">
+                    <div class="h-56 bg-gray-300 flex items-center justify-center"> <i class="fas fa-hard-hat fa-4x text-genstar-orange opacity-75"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-genstar-dark mb-2">Відновлення парку генераторів</h3>
+                        <p class="text-genstar-medium mb-4 text-sm">
+                            Комплексне обслуговування та ремонт генераторів для промислового підприємства.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-orange-100 text-genstar-orange text-xs font-medium px-2.5 py-0.5 rounded-full">Ремонт генераторів</span>
+                            <span class="bg-orange-100 text-genstar-orange text-xs font-medium px-2.5 py-0.5 rounded-full">Промисловість</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-genstar-light rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 border border-gray-200">
+                     <div class="h-56 bg-gray-300 flex items-center justify-center">
+                        <i class="fas fa-tools fa-4x text-genstar-orange opacity-75"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-genstar-dark mb-2">Сервіс для агрофірми</h3>
+                        <p class="text-genstar-medium mb-4 text-sm">
+                           Регулярне технічне обслуговування та ремонт бензоінструменту для аграрного господарства.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-orange-100 text-genstar-orange text-xs font-medium px-2.5 py-0.5 rounded-full">Бензоінструмент</span>
+                            <span class="bg-orange-100 text-genstar-orange text-xs font-medium px-2.5 py-0.5 rounded-full">Агросектор</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-genstar-light rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 border border-gray-200">
+                    <div class="h-56 bg-gray-300 flex items-center justify-center">
+                         <i class="fas fa-cogs fa-4x text-genstar-orange opacity-75"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-genstar-dark mb-2">Підготовка техніки до сезону</h3>
+                        <p class="text-genstar-medium mb-4 text-sm">
+                            Масове обслуговування газонокосарок та садової техніки для комунальних служб.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-orange-100 text-genstar-orange text-xs font-medium px-2.5 py-0.5 rounded-full">Садова техніка</span>
+                            <span class="bg-orange-100 text-genstar-orange text-xs font-medium px-2.5 py-0.5 rounded-full">Комунальні служби</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contact" class="bg-genstar-orange hover:bg-genstar-orange-dark text-white font-bold py-3 px-8 rounded-lg transition duration-300 ease-in-out inline-flex items-center shadow-md">
+                    Обговорити проект
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-20 bg-genstar-light"> <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-genstar-dark mb-4">Відгуки клієнтів</h2>
+                <div class="w-24 h-1 bg-genstar-orange mx-auto mb-8"></div>
+                <p class="text-lg text-genstar-medium max-w-3xl mx-auto">
+                    Нам довіряють, і ось чому.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-genstar-white p-8 rounded-lg shadow-lg border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex"> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-genstar-medium mb-6 italic">
+                        "Відремонтували мій генератор швидко та якісно. Дуже задоволений сервісом GEN STAR! Справжні професіонали."
+                    </p>
+                    <div class="flex items-center">
+                        <img class="w-12 h-12 rounded-full object-cover border-2 border-genstar-orange" src="img/rev/client1-genstar.jpg" alt="Сергій М." onerror="this.onerror=null;this.src='https://placehold.co/48x48/FF8C00/FFFFFF?text=СМ';">
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold text-genstar-dark">Сергій М.</h4>
+                            <p class="text-gray-500">Власник будинку</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-genstar-white p-8 rounded-lg shadow-lg border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-genstar-medium mb-6 italic">
+                        "Приносила бензопилу, все зробили на вищому рівні. Майстри з GEN STAR SERVICE пояснили причину поломки та швидко її усунули. Рекомендую!"
+                    </p>
+                    <div class="flex items-center">
+                         <img class="w-12 h-12 rounded-full object-cover border-2 border-genstar-orange" src="img/rev/client2-genstar.jpg" alt="Олена В." onerror="this.onerror=null;this.src='https://placehold.co/48x48/FF8C00/FFFFFF?text=ОВ';">
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold text-genstar-dark">Олена В.</h4>
+                            <p class="text-gray-500">Дачниця</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-genstar-white p-8 rounded-lg shadow-lg border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-genstar-medium mb-6 italic">
+                        "Найкращий сервіс в Гостомелі! Завжди звертаюся сюди з будь-якими проблемами по техніці. Жодного разу не підвели."
+                    </p>
+                    <div class="flex items-center">
+                        <img class="w-12 h-12 rounded-full object-cover border-2 border-genstar-orange" src="img/rev/client3-genstar.jpg" alt="Андрій П." onerror="this.onerror=null;this.src='https://placehold.co/48x48/FF8C00/FFFFFF?text=АП';">
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold text-genstar-dark">Андрій П.</h4>
+                            <p class="text-gray-500">Підприємець</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-genstar-white"> <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-genstar-dark mb-4">Зв'яжіться з нами</h2>
+                <div class="w-24 h-1 bg-genstar-orange mx-auto mb-8"></div>
+                <p class="text-lg text-genstar-medium max-w-3xl mx-auto">
+                    Маєте питання або готові замовити ремонт? Ми завжди на зв'язку!
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <div class="bg-genstar-light p-8 rounded-lg shadow-xl border border-gray-200">
+                    <h3 class="text-2xl font-semibold text-genstar-dark mb-6">Надіслати повідомлення</h3>
+                    <form id="contact-form-main" class="space-y-6">
+                        <div>
+                            <label for="name-main" class="block text-genstar-medium font-medium mb-2">Ім'я</label>
+                            <input type="text" id="name-main" name="name" class="contact-input w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none text-genstar-dark placeholder-gray-400" placeholder="Ваше ім'я" required>
+                        </div>
+                        <div>
+                            <label for="phone-main" class="block text-genstar-medium font-medium mb-2">Телефон</label>
+                            <input type="tel" id="phone-main" name="phone" class="contact-input w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none text-genstar-dark placeholder-gray-400" placeholder="+38 (XXX) XXX-XX-XX" required>
+                        </div>
+                        <div>
+                            <label for="message-main" class="block text-genstar-medium font-medium mb-2">Повідомлення</label>
+                            <textarea id="message-main" name="message" rows="4" class="contact-input w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none text-genstar-dark placeholder-gray-400" placeholder="Опишіть вашу проблему або питання" required></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full bg-genstar-orange hover:bg-genstar-orange-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out shadow-md">
+                                Надіслати
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="bg-genstar-light p-8 rounded-lg shadow-xl border border-gray-200">
+                    <h3 class="text-2xl font-semibold text-genstar-dark mb-6">Контактна інформація</h3>
+                    <div class="space-y-5">
+                        <div class="flex items-start">
+                            <div class="text-genstar-orange mr-4 flex-shrink-0 pt-1">
+                                <i class="fas fa-map-marker-alt fa-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-genstar-dark mb-1">Адреса</h4>
+                                <p class="text-genstar-medium">Гостомель, вул. Свято-Покровська, 108а (орієнтир)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-genstar-orange mr-4 flex-shrink-0 pt-1">
+                                <i class="fas fa-phone-alt fa-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-genstar-dark mb-1">Телефони</h4>
+                                <p class="text-genstar-medium"><a href="tel:+380991252620" class="hover:text-genstar-orange">+38 (099) 125-26-20</a> (Vodafone, Viber)</p>
+                                <p class="text-genstar-medium"><a href="tel:+380961090110" class="hover:text-genstar-orange">+38 (096) 109-01-10</a> (Київстар)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-genstar-orange mr-4 flex-shrink-0 pt-1">
+                                <i class="fas fa-envelope fa-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-genstar-dark mb-1">Email</h4>
+                                <p class="text-genstar-medium"><a href="mailto:genstarservice@gmail.com" class="hover:text-genstar-orange">genstarservice@gmail.com</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-genstar-orange mr-4 flex-shrink-0 pt-1">
+                                 <i class="fas fa-clock fa-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-genstar-dark mb-1">Графік роботи</h4>
+                                <p class="text-genstar-medium">Пн-Пт: 09:00 - 18:00</p>
+                                <p class="text-genstar-medium">Сб: 10:00 - 17:00 (бажано уточнити)</p>
+                                <p class="text-genstar-medium">Нд: Вихідний</p>
+                            </div>
+                        </div>
+                         <div class="mt-6">
+                            <h4 class="text-lg font-semibold text-genstar-dark mb-3">Ми в соцмережах:</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.instagram.com/genstar.service/" target="_blank" rel="noopener noreferrer" aria-label="Instagram GenStar Service" class="text-genstar-medium hover:text-genstar-orange transition duration-300">
+                                    <i class="fab fa-instagram fa-2x"></i>
+                                </a>
+                                <a href="viber://chat?number=%2B380991252620" aria-label="Viber GenStar Service" class="text-genstar-medium hover:text-genstar-orange transition duration-300">
+                                    <i class="fab fa-viber fa-2x"></i>
+                                </a>
+                                 <a href="https://t.me/GenStarServiceUA" target="_blank" rel="noopener noreferrer" aria-label="Telegram GenStar Service" class="text-genstar-medium hover:text-genstar-orange transition duration-300">
+                                    <i class="fab fa-telegram fa-2x"></i>
+                                </a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-genstar-blue-dark py-10 border-t-4 border-genstar-orange"> <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
+                <div>
+                     <img src="img/logo-genstar-light.jpg" alt="Gen Star Service Logo Footer" class="h-10 mb-4 mx-auto md:mx-0" onerror="this.onerror=null;this.src='https://placehold.co/150x40/0A2463/F8F9FA?text=GenStar&font=montserrat';">
+                    <p class="text-gray-400 text-sm">
+                        Ваш надійний партнер з ремонту генераторів, бензо- та електроінструменту. Якість, швидкість, професіоналізм.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold text-genstar-light-on-dark mb-4">Швидкі посилання</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-genstar-orange text-sm">Про нас</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-genstar-orange text-sm">Послуги</a></li>
+                        <li><a href="#locations" class="text-gray-400 hover:text-genstar-orange text-sm">Локації</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-genstar-orange text-sm">Контакти</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold text-genstar-light-on-dark mb-4">Зв'яжіться з нами</h5>
+                    <p class="text-gray-400 text-sm mb-1">Гостомель, вул. Свято-Покровська, 108а</p>
+                    <p class="text-gray-400 text-sm mb-1"><a href="tel:+380991252620" class="hover:text-genstar-orange">+38 (099) 125-26-20</a></p>
+                    <p class="text-gray-400 text-sm"><a href="mailto:genstarservice@gmail.com" class="hover:text-genstar-orange">genstarservice@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="text-center text-gray-500 text-sm border-t border-gray-700 pt-8">
+                &copy; 2023- <span id="current-year"></span> Gen Star Service. Всі права захищено.
+            </div>
+        </div>
+    </footer>
+
+    <button id="scroll-to-top" title="Нагору" class="scroll-to-top fixed bottom-6 right-6 bg-genstar-orange hover:bg-genstar-orange-dark text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
-    });
-  </script>
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a, .nav-link').forEach(link => { // Додано .nav-link для закриття меню і на десктопі при кліку на якір
+            link.addEventListener('click', (e) => {
+                if (mobileMenu.classList.contains('hidden') === false) {
+                     mobileMenu.classList.add('hidden');
+                }
+                // Плавна прокрутка залишається
+                const targetId = link.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 70; 
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Scroll to top button
+        const scrollToTopButton = document.getElementById('scroll-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopButton.classList.add('visible');
+            } else {
+                scrollToTopButton.classList.remove('visible');
+            }
+        });
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Contact Form Submission (приклад, потрібна реальна логіка відправки)
+        const contactForm = document.getElementById('contact-form-main');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Дякуємо за ваше повідомлення! Ми зв\'яжемося з вами найближчим часом.');
+                contactForm.reset();
+            });
+        }
+
+    </script>
 </body>
 </html>
-
